@@ -21,7 +21,6 @@ public class Country{
 
     public Country() {
     }
-
     public void setId(int id) {
         this.id = id;
     }

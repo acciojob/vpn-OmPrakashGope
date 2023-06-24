@@ -14,7 +14,7 @@ public class User {
     private String password;
     private String originalIp;
     private String maskedIp;
-    private boolean connected;
+    private Boolean connected;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Country originalCountry;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
@@ -45,7 +45,7 @@ public class User {
         return maskedIp;
     }
 
-    public boolean getConnected() {
+    public Boolean getConnected() {
         return connected;
     }
 
