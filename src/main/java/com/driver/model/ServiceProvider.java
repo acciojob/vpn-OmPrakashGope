@@ -21,7 +21,7 @@ public class ServiceProvider {
     @OneToMany(mappedBy = "serviceProvider",cascade = CascadeType.ALL)
     private List<Country> countryList = new ArrayList<>();
     @ManyToMany
-    @JoinTable(joinColumns = @JoinColumn,inverseJoinColumns = @JoinColumn)
+    @JoinColumn
     private List<User> users = new ArrayList<>();
 
     public ServiceProvider() {
