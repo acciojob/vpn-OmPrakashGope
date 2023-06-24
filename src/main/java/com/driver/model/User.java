@@ -15,7 +15,7 @@ public class User {
     private String originalIp;
     private String maskedIp;
     private boolean connected;
-    private String getOriginalCountry;
+    private CountryName getOriginalCountry;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Country country;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
@@ -31,11 +31,11 @@ public class User {
     }
 
 
-    public String getGetOriginalCountry() {
+    public CountryName getGetOriginalCountry() {
         return getOriginalCountry;
     }
 
-    public void setGetOriginalCountry(String getOriginalCountry) {
+    public void setGetOriginalCountry(CountryName getOriginalCountry) {
         this.getOriginalCountry = getOriginalCountry;
     }
 
