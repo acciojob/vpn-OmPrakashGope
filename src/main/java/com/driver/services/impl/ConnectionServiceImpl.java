@@ -36,7 +36,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         if(user.getConnected()){
             throw new Exception("Already connected");
         }
-        if(user.getCountry().getCountryName().equals(countryName.substring(0,3).toUpperCase()))
+        if(user.getOriginalCountry().getCountryName().equals(countryName.substring(0,3).toUpperCase()))
         {
             user.setConnected(true);
             return user;
@@ -71,7 +71,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         {
             throw new Exception("Unable to connect");
         }
-        user.setCountry(country);
+        user.setOriginalCountry(country);
         user.setConnected(true);
         user.setMaskedIp(country.getCode() + "."+mainServiceProvider.getId()+"."+ user.getId());
         user = userRepository2.save(user);
@@ -104,11 +104,11 @@ public class ConnectionServiceImpl implements ConnectionService {
         //If communication can not be established due to any reason, throw "Cannot establish communication" exception
         User sender = userRepository2.findById(senderId).get();
         User receiver = userRepository2.findById(receiverId).get();
-        if(sender.getCountry().getCountryName().equals(receiver.getCountry().getCountryName()))
+        if(sender.getOriginalCountry().getCountryName().equals(receiver.getOriginalCountry().getCountryName()))
         {
             return sender;
         }
-        sender = connect(sender.getId(),receiver.getCountry().getCountryName().toString());
+        sender = connect(sender.getId(),receiver.getOriginalCountry().getCountryName().toString());
         return sender;
     }
 }
