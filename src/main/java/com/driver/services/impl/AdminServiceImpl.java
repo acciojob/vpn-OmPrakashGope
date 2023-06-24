@@ -70,7 +70,7 @@ public class AdminServiceImpl implements AdminService {
         else {
             throw new Exception("Country not found");
         }
-        country.setCodes(country.getCountryName().toCode());
+        country.setCode(country.getCountryName().toCode());
         country.setServiceProvider(serviceProvider);
         serviceProvider.getCountryList().add(country);
         return serviceProviderRepository1.save(serviceProvider);

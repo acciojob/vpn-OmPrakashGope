@@ -45,7 +45,7 @@ public class User {
         return maskedIp;
     }
 
-    public boolean isConnected() {
+    public boolean getConnected() {
         return connected;
     }
 

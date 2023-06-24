@@ -33,7 +33,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         // return the updated user. If multiple service providers allow you to connect to the country,
         // use the service provider having smallest id.
         User user = userRepository2.findById(userId).get();
-        if(user.isConnected()){
+        if(user.getConnected()){
             throw new Exception("Already connected");
         }
         if(user.getCountry().getCountryName().equals(countryName.substring(0,3).toUpperCase()))
@@ -73,7 +73,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         }
         user.setCountry(country);
         user.setConnected(true);
-        user.setMaskedIp(country.getCodes() + "."+mainServiceProvider.getId()+"."+ user.getId());
+        user.setMaskedIp(country.getCode() + "."+mainServiceProvider.getId()+"."+ user.getId());
         user = userRepository2.save(user);
         return user;
     }
@@ -82,7 +82,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         //If the given user was not connected to a vpn, throw "Already disconnected" exception.
         //Else, disconnect from vpn, make masked Ip as null, update relevant attributes and return updated user.
         User user = userRepository2.findById(userId).get();
-        if(!user.isConnected())
+        if(!user.getConnected())
         {
             throw new Exception("Already disconnected");
         }

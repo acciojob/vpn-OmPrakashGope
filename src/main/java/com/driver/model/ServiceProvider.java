@@ -16,12 +16,23 @@ public class ServiceProvider {
     private Admin admin;
 
     @OneToMany(mappedBy = "serviceProvider",cascade = CascadeType.ALL)
+    private List<Connection> connectionList;
+
+    @OneToMany(mappedBy = "serviceProvider",cascade = CascadeType.ALL)
     private List<Country> countryList = new ArrayList<>();
     @ManyToMany
     @JoinTable(joinColumns = @JoinColumn,inverseJoinColumns = @JoinColumn)
     private List<User> users = new ArrayList<>();
 
     public ServiceProvider() {
+    }
+
+    public void setConnectionList(List<Connection> connectionList) {
+        this.connectionList = connectionList;
+    }
+
+    public List<Connection> getConnectionList() {
+        return connectionList;
     }
 
     public int getId() {
