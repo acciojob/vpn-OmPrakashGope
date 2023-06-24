@@ -18,6 +18,14 @@ public class Connection {
     public Connection() {
     }
 
+    public ServiceProvider getServiceProvider() {
+        return serviceProvider;
+    }
+
+    public void setServiceProvider(ServiceProvider serviceProvider) {
+        this.serviceProvider = serviceProvider;
+    }
+
     public int getId() {
         return id;
     }
