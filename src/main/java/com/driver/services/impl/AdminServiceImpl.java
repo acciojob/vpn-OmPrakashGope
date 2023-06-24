@@ -52,19 +52,19 @@ public class AdminServiceImpl implements AdminService {
         //In case country name is not amongst the above mentioned strings, throw "Country not found" exception
         ServiceProvider serviceProvider = serviceProviderRepository1.findById(serviceProviderId).get();
         Country country = new Country();
-        if(countryName.equals("IND")){
+        if(countryName.substring(0,3).toUpperCase().equals("IND")){
             country.setCountryName(CountryName.IND);
         }
-        else if(countryName.equals("AUS")){
+        else if(countryName.substring(0,3).toUpperCase().equals("AUS")){
             country.setCountryName(CountryName.AUS);
         }
-        else if(countryName.equals("CHI")){
+        else if(countryName.substring(0,3).toUpperCase().equals("CHI")){
             country.setCountryName(CountryName.CHI);
         }
-        else if(countryName.equals("JPN")){
+        else if(countryName.substring(0,3).toUpperCase().equals("JPN")){
             country.setCountryName(CountryName.JPN);
         }
-        else if(countryName.equals("USA")){
+        else if(countryName.substring(0,3).toUpperCase().equals("USA")){
             country.setCountryName(CountryName.USA);
         }
         else {
